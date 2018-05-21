@@ -21,7 +21,7 @@ baseurl: "/sensori"
 title: Progetto di sistemi a sensore
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: Sito che raccoglie i progetti dell'esame "Progetto di sistemi a sensore"
 
 # --- Navigation bar options --- #
 
@@ -40,7 +40,7 @@ navbar-links:
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
-title-img: img/signal.png
+title-img:  /sensori/img/signal.png
 
 # --- Background colour/image options --- #
 
