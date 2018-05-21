@@ -1,1 +1,1 @@
-Sitemap: http://localhost:2222/sitemap.xml
+Sitemap: http://localhost:2222/sensori/sitemap.xml
