@@ -226,15 +226,15 @@ Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica
 
 <p>Abbiamo collegato i MEMS al Pi3 seguento il seguente schema</p>
 
-<p><img src="/img/picajon/collegamento.png" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/collegamento.png" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <p>ottenendo come risultato finale:</p>
 
-<p><img src="/img/picajon/hw1.jpg" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/hw1.jpg" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
-<p><img src="/img/picajon/hw2.jpg" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/hw2.jpg" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
-<p><img src="/img/picajon/hw3.jpg" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/hw3.jpg" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <p>Come si può notare dalle immagini soprastanti, i microfoni sono stati racchiusi in una scatolina piena di cotone. Questo è stato necessario per non far andare i microfoni in saturazione.
 I microfoni sono stati posizionati internamente al cajon, nello specifico all’interno delle due facciate laterali.</p>
@@ -273,7 +273,7 @@ env[RIGHT] = max(abs(right), env[RIGHT] * ALPHA)
 
 <p>Nell’immagine sottostante potete vedere il canale sinistro di una porzione di segnale registrato dal cajon con il suo relativo inviluppo:</p>
 
-<p><img src="/img/picajon/envelope.png" style="width: 600px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/envelope.png" style="width: 600px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <h4 id="derivata">Derivata</h4>
 
@@ -286,7 +286,7 @@ di dimensione 24. Ad ogni campione è stata effettuata una differenza tra l’in
 
 <p>Nell’immagine sottostante potete vedere il canale sinistro di una porzione di segnale registrato dal cajon, il suo inviluppo e derivata:</p>
 
-<p><img src="/img/picajon/derivative.png" style="width: 600px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/derivative.png" style="width: 600px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <h4 id="lr-fft-e-rapporto">L/R, FFT e rapporto</h4>
 <p>Per determinare la presenza di un <em>onset</em> ci siamo avvalsi dell’utilizzo di una soglia.
@@ -294,7 +294,7 @@ Quando una delle due derivate supera la soglia memorizziamo se si è trattato de
 basandoci sulla “temporizzazione” del colpo ovvero, se il colpo è stato captato prima dal microfono sinistro allora vuol dire che è stato dato sul lato sinistro.
 Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale corrispondente, prima di verificare nuovamente la presenza di un onset.</p>
 
-<p><img src="/img/picajon/onset.png" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/onset.png" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <p>Raccolti i 1024 passiamo al calcolo della <strong>FFT</strong> e del <strong>PSD</strong> (<em>power spectral density</em>) che sarà necessario per determinare se l’onset rilevato è <strong>frontale</strong> o <strong>laterale</strong>.</p>
 
@@ -306,12 +306,12 @@ Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale cor
 
 <figure>
     <figcaption>Frontale</figcaption>
-    <img src="/img/picajon/front.png" style="width: 600px; margin-bottom: 30px" />
+    <img src="/sensori/img/picajon/front.png" style="width: 600px; margin-bottom: 30px" />
 </figure>
 
 <figure>
     <figcaption>Laterale</figcaption>
-    <img src="/img/picajon/lateral.png" style="width: 600px; margin-bottom: 30px" />
+    <img src="/sensori/img/picajon/lateral.png" style="width: 600px; margin-bottom: 30px" />
 </figure>
 
 <p>Si nota come i PSD dei colpi frontali sono molto diversi da quelli laterali. Dopo svariati esperimenti abbiamo scelto quelle che secondo noi sono le frequenze (ovvero indici del vettore corrispondente al PSD) significative da utilizzare per identificare la provenienza del colpo.</p>
