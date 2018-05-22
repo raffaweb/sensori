@@ -182,11 +182,11 @@ cajon, permettendo anche la riproduzione di campioni tramite l’utilizzo di un 
 <h2 id="obbiettivi-e-descrizione">Obbiettivi e descrizione</h2>
 <p>L’obbiettivo di questo progetto è quello di aumentare le “possibilità sonore” offerte da un <a href="https://en.wikipedia.org/wiki/Caj%C3%B3n">cajon</a>, uno strumento musicale.</p>
 
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Cajon_musician.jpg" style="width: 250px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/sensori/img/picajon/raffa_cajon.jpg" style="width: 400px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <p>Al giorno d’oggi il cajon viene utilizzato in contesti di musica moderna dove vi è la necessità di
 utilizzare anche altre tipologie di suoni (un tamburello, un clap, un wind chimes..), ecco la definizione di <strong>“cajon aumentato”</strong>.
-Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica</strong> in grado di offire al musicista la possibilità di aggiungere <strong>due suoni</strong> (<em>campioni</em>) per espandere le sue possibilità sonore.</p>
+Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica</strong> in grado di offrire al musicista la possibilità di aggiungere <strong>due suoni</strong> (<em>campioni</em>) per espandere le sue possibilità sonore.</p>
 
 <p>Il cajon continuerà a essere suonato al solito modo, ma quando il musicista suonerà la faccia destra o sinistra dello strumento verranno riprodotti i campioni rispettivi.</p>
 
@@ -246,17 +246,20 @@ env[RIGHT] = max(abs(right), env[RIGHT] * ALPHA)
 </div>
 
 <p>dove</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>LEFT = 0 e RIGHT = 1 sono due costanti
-ALPHA = .9995 è una costante
-env è un array di lunghezza 2 dove memorizzeremo l'inviluppo relativo
-    a LEFT e RIGHT.
-left e right sono due varibili, dove ad ogni iterazione del ciclo si
-    trovano il campione destro e sinistro appena letti.
-max e abs sono due funzioni che calcolano rispettivamenti il massimo
-    e il valore assoluto.
 
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">LEFT = 0</code> e <code class="highlighter-rouge">RIGHT = 1</code> sono due costanti.</p>
+
+<p><code class="highlighter-rouge">ALPHA</code> è una costante che determina l’importanza dell’inviluppo calcolato
+fino ad un dato istante, rispetto al nuovo campione.</p>
+
+<p><code class="highlighter-rouge">env</code> è un array di lunghezza 2 dove memorizzeremo l’inviluppo relativo a
+LEFT e RIGHT.</p>
+
+<p><code class="highlighter-rouge">left</code> e <code class="highlighter-rouge">right</code> sono due varibili, dove ad ogni iterazione del ciclo si
+trovano il campione destro e sinistro appena letti.</p>
+
+<p><code class="highlighter-rouge">max</code> e <code class="highlighter-rouge">abs</code> sono due funzioni che calcolano rispettivamenti il massimo e
+il valore assoluto.</p>
 
 <p>Nell’immagine sottostante potete vedere il canale sinistro di una porzione di segnale registrato dal cajon con il suo relativo inviluppo:</p>
 
@@ -272,14 +275,11 @@ di dimensione 24. Ad ogni campione è stata effettuata una differenza tra l’in
 </div>
 <p>dove</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gh">diff è un array di lunghezza 2 dove memorizzeremo la differenza tra
-</span>    l'inviluppo corrente e quello calcolato 24 campioni indietro.
-buffer_idx è una variabile di ciclo che va da 0 a 23.
-buffer è un buffer circolare ovvero una matrice di dimensione 24 * 2
-    dove ad ogni iterazione si troveranno gli ultimi
-    24 valori dell'inviluppo.
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">diff</code> è un array di lunghezza 2 dove memorizzeremo la differenza tra l’inviluppo corrente e quello calcolato 24 campioni indietro.</p>
+
+<p><code class="highlighter-rouge">buffer_idx</code> è una variabile di ciclo che va da 0 a 23.</p>
+
+<p><code class="highlighter-rouge">buffer</code> è un buffer circolare ovvero una matrice di dimensione 24 * 2 dove ad ogni iterazione si troveranno gli ultimi 24 valori dell’inviluppo.</p>
 
 <p>Nell’immagine sottostante potete vedere il canale sinistro di una porzione di segnale registrato dal cajon, il suo inviluppo e derivata:</p>
 
