@@ -89,6 +89,7 @@
 
   
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js"></script>
 </head>
 
 
@@ -202,11 +203,15 @@ Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica
   <li><a href="https://learn.adafruit.com/adafruit-i2s-mems-microphone-breakout/overview">Adafruit I2S MEMS Microphone Breakout </a></li>
 </ul>
 
-<p>Abbiamo collegato i MEMS al Pi3 seguento il seguente schema</p>
+<p>Abbiamo collegato i microfoni al Raspberry seguento il seguente schema</p>
+
+<p><img src="/sensori/img/picajon/hardware_raspberry.png" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
+
+<p>I pin dei microfoni sono stati collegati al pin del raspeberry in questo modo:</p>
 
 <p><img src="/sensori/img/picajon/collegamento.png" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
-<p>ottenendo come risultato finale:</p>
+<p>Ecco il risultato finale:</p>
 
 <p><img src="/sensori/img/picajon/hw1.jpg" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
@@ -362,13 +367,16 @@ Alcune delle sue principali caratteristiche sono:</p>
     <p>Per rispettare il più possibile il requisito del <em>real-time</em> ci siamo avvalsi dell’utilizzo dei Thread utilizzando il modulo di python <a href="https://docs.python.org/2/library/threading.html#module-threading">threading</a>.
   Nello specifico sono presenti due thread:</p>
     <ul>
-      <li>uno che ascolta</li>
-      <li>uno che suona</li>
+      <li>uno che ascolta: <code class="highlighter-rouge">MAIN THREAD</code></li>
+      <li>uno che suona: <code class="highlighter-rouge">PLAYER THREAD</code></li>
     </ul>
 
-    <p>I due thread sono sincronizzati tramite un <em>semaforo</em>.</p>
+    <p>I due thread sono sincronizzati tramite un <em>evento</em> (una sorta di semaforo).
+  Nell’immagine sottostante potete vedere il <em>workflow</em> del software, dove i <em>box</em> in arancione rappresentano le porzioni di codice scritte in <em>Cython</em>.</p>
   </li>
 </ul>
+
+<p><img src="/sensori/img/picajon/grafico_software.png" style="margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
       </article>
 
