@@ -178,22 +178,20 @@
 
       <article role="main" class="blog-post">
         <p>Aumentare le “possibilità sonore” offerte da un
-cajon, permettendo anche la riproduzione di campioni tramite l’utilizzo di un Raspberry Pi3 e due microfoni MEMS.</p>
+cajon, permettendo la riproduzione di campioni tramite l’utilizzo di un Raspberry Pi3 e due microfoni MEMS.</p>
 
 <h2 id="obbiettivi-e-descrizione">Obbiettivi e descrizione</h2>
 <p>L’obbiettivo di questo progetto è quello di aumentare le “possibilità sonore” offerte da un <a href="https://en.wikipedia.org/wiki/Caj%C3%B3n">cajon</a>, uno strumento musicale.</p>
 
 <p><img src="/sensori/img/picajon/raffa_cajon.jpg" style="width: 400px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
-<p>Al giorno d’oggi il cajon viene utilizzato in contesti di musica moderna dove vi è la necessità di
-utilizzare anche altre tipologie di suoni (un tamburello, un clap, un wind chimes..), ecco la definizione di <strong>“cajon aumentato”</strong>.
+<p>Al giorno d’oggi il cajon viene utilizzato in contesti di musica moderna dove spesso vi è la necessità di
+utilizzare anche altri tipi di suoni (un tamburello, un clap, un wind chimes..), ecco la definizione di <strong>“cajon aumentato”</strong>.
 Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica</strong> in grado di offrire al musicista la possibilità di aggiungere <strong>due suoni</strong> (<em>campioni</em>) per espandere le sue possibilità sonore.</p>
 
-<p>Il cajon continuerà a essere suonato al solito modo, ma quando il musicista suonerà la faccia destra o sinistra dello strumento verranno riprodotti i campioni rispettivi.</p>
+<p>Il cajon continuerà a essere suonato al “solito modo”, ma quando il musicista suonerà la faccia destra o sinistra dello strumento verranno riprodotti i campioni rispettivi.</p>
 
-<p>Ribadiamo che per raggiungere lo scopo del progetto si voleva manterene un budget basso in modo da permettere a chiunque di utilizzare questa soluzione con poche decine di euro.</p>
-
-<p>L’<strong>idea di base</strong> è quella di raccogliere i segnali provenienti dal cajon con l’ausilio di microfoni ed elabolarli in tempo reale per decidere se provengono dai lati oppure dalla parte frontale che d’ora in poi chiamaremo <strong>tapa</strong>. Nel primo caso vogliamo riprodurre il campione corrispondente al <strong>left</strong> o <strong>right</strong> (facciata sinistra o destra), mentre nel secondo non dobbiamo riprodurre alcun suono extra.</p>
+<p>L’<strong>idea di base</strong> è quella di raccogliere i segnali provenienti dal cajon con l’ausilio di microfoni ed elabolarli in tempo reale per decidere se provengono dai lati oppure dalla parte frontale che d’ora in poi chiamaremo <strong>tapa</strong>. Nel primo caso vogliamo riprodurre il campione corrispondente alla facciata sinistra o destra (<strong>left</strong> o <strong>right</strong>), mentre nel secondo non dobbiamo riprodurre alcun suono extra.</p>
 
 <h2 id="hardware">Hardware</h2>
 <p>Ci siamo avvalsi dell’utilizzo di un microcomputer e di due microfoni MEMS, rispettivamente:</p>
@@ -237,9 +235,9 @@ I microfoni sono stati posizionati internamente al cajon, nello specifico appogg
   <li><strong>riprodurre</strong> il campione rispettivo (sinistro o destro) “in tempo reale” e gestire il mix tra i due qualora fosse necessario</li>
 </ul>
 
-<p>È da sottolineare come tutte le scelte ai punti sopra devono essere fatte in <strong>“tempo reale”</strong>. Questo aspetto ha condizionato molte delle decisini prese durante la realizzazione del progetto.</p>
+<p>È da sottolineare come tutte le scelte ai punti sopra devono essere fatte in <strong>“tempo reale”</strong>. Questo aspetto ha condizionato molte delle decisioni prese durante la realizzazione del progetto.</p>
 
-<p>Per la rilevazione degli onset ci siamo avvalsi di: inviluppo e derivata.</p>
+<p>Per la rilevazione degli onset ci siamo avvalsi di: <strong>inviluppo</strong> e <strong>derivata</strong>.</p>
 
 <h4 id="inviluppo">Inviluppo</h4>
 
@@ -257,11 +255,11 @@ env[RIGHT] = max(abs(right), env[RIGHT] * ALPHA)
 <p><code class="highlighter-rouge">ALPHA</code> è una costante che determina l’importanza dell’inviluppo calcolato
 fino ad un dato istante, rispetto al nuovo campione.</p>
 
-<p><code class="highlighter-rouge">env</code> è un array di lunghezza 2 dove memorizzeremo l’inviluppo relativo a
+<p><code class="highlighter-rouge">env</code> è un array di lunghezza 2 dove memorizziamo l’inviluppo relativo a
 LEFT e RIGHT.</p>
 
 <p><code class="highlighter-rouge">left</code> e <code class="highlighter-rouge">right</code> sono due varibili, dove ad ogni iterazione del ciclo si
-trovano il campione destro e sinistro appena letti.</p>
+trovano il campione sinistro e destro appena letti.</p>
 
 <p><code class="highlighter-rouge">max</code> e <code class="highlighter-rouge">abs</code> sono due funzioni che calcolano rispettivamenti il massimo e
 il valore assoluto.</p>
@@ -273,18 +271,18 @@ il valore assoluto.</p>
 <h4 id="derivata">Derivata</h4>
 
 <p>Per il calcolo della derivata ci siamo avvalsi di un <em>buffer circolare</em>
-di dimensione 24. Ad ogni campione è stata effettuata una differenza tra l’inviluppo attuale e l’inviluppo calcolato 24 campioni indietro:</p>
+di dimensione 24. Per ogni campione è stata effettuata una differenza tra l’inviluppo attuale e l’inviluppo calcolato 24 campioni indietro:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gh">diff = env - buffer[buffer_idx]
 </span></code></pre>
 </div>
 <p>dove</p>
 
-<p><code class="highlighter-rouge">diff</code> è un array di lunghezza 2 dove memorizzeremo la differenza tra l’inviluppo corrente e quello calcolato 24 campioni indietro.</p>
+<p><code class="highlighter-rouge">diff</code> è un array di lunghezza 2 dove memorizziamo la differenza tra l’inviluppo corrente e quello calcolato 24 campioni indietro.</p>
 
 <p><code class="highlighter-rouge">buffer_idx</code> è una variabile di ciclo che va da 0 a 23.</p>
 
-<p><code class="highlighter-rouge">buffer</code> è un buffer circolare ovvero una matrice di dimensione 24 * 2 dove ad ogni iterazione si troveranno gli ultimi 24 valori dell’inviluppo.</p>
+<p><code class="highlighter-rouge">buffer</code> è un buffer circolare ovvero una matrice di dimensione 24 * 2 dove ad ogni iterazione si trovano gli ultimi 24 valori dell’inviluppo.</p>
 
 <p>Nell’immagine sottostante potete vedere il canale sinistro di una porzione di segnale registrato dal cajon, il suo inviluppo e derivata:</p>
 
@@ -330,24 +328,24 @@ Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale cor
 
 <p>Ora non resta che “suonare” il campione corrispondente.</p>
 <h2 id="software">Software</h2>
-<h4 id="python">Python</h4>
+<h3 id="python">Python</h3>
 <p>Python è risultato il linguaggio di programmazione più adatto in fase prototipale e con le giuste aggiunte è stato performante anche nella realizzazione del progetto.</p>
 
-<h5 id="numpy">Numpy</h5>
+<h4 id="numpy">Numpy</h4>
 
 <p>Numpy è il principale pacchetto usato nel calcolo scientifico in Python.
 Alcune delle sue principali caratteristiche sono:</p>
 
 <ul>
-  <li>array N-dimensionali</li>
-  <li>broadcasting delle funzioni</li>
-  <li>tools per integrare coidice C/C++ e Fortran</li>
+  <li>array N-dimensionali,</li>
+  <li>broadcasting delle funzioni,</li>
+  <li>tool per integrare codice C/C++ e Fortran,</li>
   <li>funzioni per algebra lineare, trasformata di Fourier.</li>
 </ul>
 
-<h5 id="cython">Cython</h5>
+<h4 id="cython">Cython</h4>
 <p>Cython è una estensione del linguaggio Python che permette di scrivere estensioni in C per Python. Esso ha le potenzialità di Python ma supporta ad esempio le chiamate a funzioni in C o la dichiarazione dei tipi sulle variabili. Questo permette al compilatore di generare del codice C veramente efficiente partendo da quello Cython.</p>
-<h4 id="premix-e-multithread">Premix e Multithread</h4>
+<h3 id="premix-e-multithread">Premix e Multithread</h3>
 <ul>
   <li>
     <p><strong>Premix</strong></p>
@@ -371,10 +369,12 @@ Alcune delle sue principali caratteristiche sono:</p>
       <li>uno che suona: <code class="highlighter-rouge">PLAYER THREAD</code></li>
     </ul>
 
-    <p>I due thread sono sincronizzati tramite un <em>evento</em> (una sorta di semaforo).
-  Nell’immagine sottostante potete vedere il <em>workflow</em> del software, dove i <em>box</em> in arancione rappresentano le porzioni di codice scritte in <em>Cython</em>.</p>
+    <p>I due thread sono sincronizzati tramite un <em>evento</em> (una sorta di semaforo).</p>
   </li>
 </ul>
+
+<h3 id="workflow">Workflow</h3>
+<p>Nell’immagine sottostante potete vedere il <em>workflow</em> del software, dove i <em>box</em> in arancione rappresentano le porzioni di codice scritte in <em>Cython</em>.</p>
 
 <p><img src="/sensori/img/picajon/grafico_software.png" style="margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
