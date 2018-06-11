@@ -65,8 +65,8 @@
   <meta property="og:type" content="website" />
 
   
-  <meta property="og:url" content="http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/" />
-  <link rel="canonical" href="http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/" />
+  <meta property="og:url" content="http://localhost:2222/2018-05-21-Pi-cajon/" />
+  <link rel="canonical" href="http://localhost:2222/2018-05-21-Pi-cajon/" />
   
 
   
@@ -107,7 +107,7 @@
         <span class="icon-bar"></span>
       </button>
       
-        <a class="navbar-brand navbar-brand-logo" href="http://raffaweb.github.io/sensori"><img src="/sensori/img/signal.png"/></a>
+        <a class="navbar-brand navbar-brand-logo" href="http://localhost:2222"><img src="/sensori/img/signal.png"/></a>
       
     </div>
 
@@ -306,7 +306,7 @@ Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale cor
 
 <figure>
     <figcaption>Frontale</figcaption>
-    <img src="/sensori/img/picajon/front.png" style="width: 600px; margin-bottom: 30px" />
+    <img src="/sensori/img/picajon/front.png" style="width: 580px; margin-bottom: 30px" />
 </figure>
 
 <figure>
@@ -316,13 +316,13 @@ Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale cor
 
 <p>Si nota come i PSD dei colpi frontali sono molto diversi da quelli laterali. Dopo svariati esperimenti abbiamo scelto quelle che secondo noi sono le frequenze (ovvero indici del vettore corrispondente al PSD) significative da utilizzare per identificare la provenienza del colpo.</p>
 <ul>
-  <li>Fascia verde: 43 - 215 Hz</li>
-  <li>Fascia rossa: 215 - 559 Hz</li>
+  <li>Fascia verde: 86 - 172 Hz</li>
+  <li>Fascia rossa: 258 - 344 Hz</li>
 </ul>
 
 <p>Utilizzando la formula sottostante e confrontando il risultato <code class="highlighter-rouge">ratio</code>  con una soglia siamo stati in grando di identificare la provenienza del colpo:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ratio = np.sum(psd[2:10]) / np.sum(psd[23:26])
+<div class="highlighter-rouge"><pre class="highlight"><code>ratio = np.sum(psd[1:3]) / np.sum(psd[5:7])
 </code></pre>
 </div>
 
@@ -378,6 +378,15 @@ Alcune delle sue principali caratteristiche sono:</p>
 
 <p><img src="/sensori/img/picajon/grafico_software.png" style="margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
+<h2 id="dimostrazione">Dimostrazione</h2>
+<p>Ecco una dimostrazione del risultato conseguito</p>
+
+<!-- blank line -->
+<figure class="video_container">
+  <iframe src="https://www.youtube.com/embed/a2xU7fQQuQA" frameborder="0" allowfullscreen="true" width="640px" height="360px"> </iframe>
+</figure>
+<!-- blank line -->
+
       </article>
 
       
@@ -404,7 +413,7 @@ Alcune delle sue principali caratteristiche sono:</p>
 
   
   <!--- Share on Twitter -->
-    <a href="https://twitter.com/intent/tweet?text=PiCajon+http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/"
+    <a href="https://twitter.com/intent/tweet?text=PiCajon+http://localhost:2222/2018-05-21-Pi-cajon/"
       class="btn btn-social-icon btn-twitter" title="Share on Twitter">
       <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
       <span class="sr-only">Twitter</span>
@@ -413,7 +422,7 @@ Alcune delle sue principali caratteristiche sono:</p>
 
   
   <!--- Share on Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/"
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2222/2018-05-21-Pi-cajon/"
       class="btn btn-social-icon btn-facebook" title="Share on Facebook">
       <span class="fa fa-fw fa-facebook" aria-hidden="true"></span>
       <span class="sr-only">Facebook</span>
@@ -424,7 +433,7 @@ Alcune delle sue principali caratteristiche sono:</p>
 
   
   <!--- Share on LinkedIn -->
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/"
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:2222/2018-05-21-Pi-cajon/"
       class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
       <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
       <span class="sr-only">LinkedIn</span>
