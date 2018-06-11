@@ -3,8 +3,8 @@
   <channel>
     <title>Progetto di sistemi a sensore</title>
     <description>Sito che raccoglie i progetti dell'esame &quot;Progetto di sistemi a sensore&quot;</description>
-    <link>http://localhost:2222</link>
-    <atom:link href="http://localhost:2222/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://raffaweb.github.io/sensori</link>
+    <atom:link href="http://raffaweb.github.io/sensori/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>PiCajon</title>
@@ -13,8 +13,8 @@
           Aumentare le “possibilità sonore” offerte da un cajon, permettendo la riproduzione di campioni tramite l’utilizzo di un Raspberry Pi3 e due microfoni MEMS. Obbiettivi e descrizione L’obbiettivo di questo progetto è quello di aumentare le “possibilità sonore” offerte da un cajon, uno strumento musicale. Al giorno d’oggi il cajon viene...
         </description>
         <pubDate>Mon, 21 May 2018 00:00:00 -0700</pubDate>
-        <link>http://localhost:2222/2018-05-21-Pi-cajon/</link>
-        <guid isPermaLink="true">http://localhost:2222/2018-05-21-Pi-cajon/</guid>
+        <link>http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/</link>
+        <guid isPermaLink="true">http://raffaweb.github.io/sensori/2018-05-21-Pi-cajon/</guid>
       </item>
     
       <item>
@@ -24,8 +24,8 @@
           You can write regular markdown here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc. Here is some bold text Here is a...
         </description>
         <pubDate>Sat, 28 Feb 2015 00:00:00 -0800</pubDate>
-        <link>http://localhost:2222/2015-02-28-test-markdown/</link>
-        <guid isPermaLink="true">http://localhost:2222/2015-02-28-test-markdown/</guid>
+        <link>http://raffaweb.github.io/sensori/2015-02-28-test-markdown/</link>
+        <guid isPermaLink="true">http://raffaweb.github.io/sensori/2015-02-28-test-markdown/</guid>
       </item>
     
   </channel>
