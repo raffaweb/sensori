@@ -186,8 +186,8 @@ cajon, permettendo la riproduzione di campioni tramite l’utilizzo di un Raspbe
 <p><img src="/sensori/img/picajon/raffa_cajon.jpg" style="width: 400px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
 <p>Al giorno d’oggi il cajon viene utilizzato in contesti di musica moderna dove spesso vi è la necessità di
-utilizzare anche altri tipi di suoni (un tamburello, un clap, un wind chimes..), ecco la definizione di <strong>“cajon aumentato”</strong>.
-Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica</strong> in grado di offrire al musicista la possibilità di aggiungere <strong>due suoni</strong> (<em>campioni</em>) per espandere le sue possibilità sonore.</p>
+avere anche altre tipologie di suoni (un tamburello, un clap, un wind chimes..), ecco la definizione di <strong>“cajon aumentato”</strong>.
+Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica</strong> in grado di offrire al musicista la possibilità di aggiungere <strong>due suoni</strong> (<em>campioni</em>) per espandere il suo ventaglio sonoro.</p>
 
 <p>Il cajon continuerà a essere suonato al “solito modo”, ma quando il musicista suonerà la faccia destra o sinistra dello strumento verranno riprodotti i campioni rispettivi.</p>
 
@@ -205,7 +205,7 @@ Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica
 
 <p><img src="/sensori/img/picajon/hardware_raspberry.png" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
-<p>I pin dei microfoni sono stati collegati al pin del raspeberry in questo modo:</p>
+<p>I pin dei microfoni sono stati collegati ai pin del raspeberry in questo modo:</p>
 
 <p><img src="/sensori/img/picajon/collegamento.png" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
@@ -217,8 +217,7 @@ Quello che vogliamo fare è  dotare il cajon di una tecnologia <strong>economica
 
 <p><img src="/sensori/img/picajon/hw3.jpg" style="width: 450px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
 
-<p>Come si può notare dalle immagini soprastanti, i microfoni sono stati racchiusi in una scatolina piena di cotone. Questo è stato necessario per non far andare i microfoni in saturazione.
-I microfoni sono stati posizionati internamente al cajon, nello specifico appoggiati alle facciate laterali.</p>
+<p>Come si può notare dalle immagini soprastanti, i microfoni sono stati dapprima incastrati in una specie di gomma e poi racchiusi in una scatolina piena di cotone. Questo è stato necessario per non far andare i microfoni in saturazione. Infine essi sono stati posizionati internamente al cajon, nello specifico appoggiati alle facciate laterali.</p>
 
 <h2 id="idea">Idea</h2>
 
@@ -235,7 +234,7 @@ I microfoni sono stati posizionati internamente al cajon, nello specifico appogg
   <li><strong>riprodurre</strong> il campione rispettivo (sinistro o destro) “in tempo reale” e gestire il mix tra i due qualora fosse necessario</li>
 </ul>
 
-<p>È da sottolineare come tutte le scelte ai punti sopra devono essere fatte in <strong>“tempo reale”</strong>. Questo aspetto ha condizionato molte delle decisioni prese durante la realizzazione del progetto.</p>
+<p>È da sottolineare come tutte le scelte ai punti sopra devono essere fatte in <strong>“tempo reale”</strong>. Questo aspetto ha condizionato molte scelte implementative prese durante la realizzazione del progetto.</p>
 
 <p>Per la rilevazione degli onset ci siamo avvalsi di: <strong>inviluppo</strong> e <strong>derivata</strong>.</p>
 
@@ -291,7 +290,7 @@ di dimensione 24. Per ogni campione è stata effettuata una differenza tra l’i
 <h4 id="leftright-fft-e-rapporto">Left/Right, FFT e rapporto</h4>
 <p>Per determinare la presenza di un <em>onset</em> ci siamo avvalsi dell’utilizzo di una soglia.
 Quando una delle due derivate supera la soglia memorizziamo se si è trattato del canale <em>left</em> o <em>right</em>
-basandoci sulla “temporizzazione” del colpo ovvero, se il colpo è stato captato prima dal microfono sinistro allora vuol dire che è stato dato sul lato sinistro.
+basandoci sulla “temporizzazione” del colpo, ovvero se il colpo è stato captato prima dal microfono sinistro allora vuol dire che è stato dato sulla faccia sinistro, viceversa su quella destra.
 Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale corrispondente, prima di verificare nuovamente la presenza di un onset.</p>
 
 <p><img src="/sensori/img/picajon/onset.png" style="width: 550px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" /></p>
@@ -314,10 +313,10 @@ Subito dopo mettiamo da parte i 1024 campioni successivi, relativi al canale cor
     <img src="/sensori/img/picajon/lateral.png" style="width: 600px; margin-bottom: 30px" />
 </figure>
 
-<p>Si nota come i PSD dei colpi frontali sono molto diversi da quelli laterali. Dopo svariati esperimenti abbiamo scelto quelle che secondo noi sono le frequenze (ovvero indici del vettore corrispondente al PSD) significative da utilizzare per identificare la provenienza del colpo.</p>
+<p>Si nota come i PSD dei colpi frontali sono molto diversi da quelli laterali. Dopo svariati esperimenti abbiamo scelto quelle che secondo noi sono le frequenze (ovvero indici del vettore corrispondente al PSD) significative da utilizzare per identificare la provenienza del colpo:</p>
 <ul>
-  <li>Fascia verde: 86 - 172 Hz</li>
-  <li>Fascia rossa: 258 - 344 Hz</li>
+  <li>fascia verde: 86 - 172 Hz</li>
+  <li>fascia rossa: 258 - 344 Hz</li>
 </ul>
 
 <p>Utilizzando la formula sottostante e confrontando il risultato <code class="highlighter-rouge">ratio</code>  con una soglia siamo stati in grando di identificare la provenienza del colpo:</p>
